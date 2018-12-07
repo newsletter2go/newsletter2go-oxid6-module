@@ -1,0 +1,1 @@
+# newsletter2go-oxid6-module
