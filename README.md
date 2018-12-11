@@ -1,6 +1,6 @@
 # newsletter2go-oxid6-module
 
-Create professional emails without the hassle. Launch automated email campaigns that boost customer engagement and drive sales.
+Connect your Newsletter2Go account to your Oxid6 webshop. Transfer customers or easily add products from your shop to newsletters.
 
 ## Installation
 1. Copy the content of this project into `<shop_directory>/source/modules/newsletter2go` directory
