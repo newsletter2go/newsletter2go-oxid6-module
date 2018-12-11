@@ -6,14 +6,15 @@ Create professional emails without the hassle. Launch automated email campaigns 
 1. Copy the content of this project into `<shop_directory>/source/modules/Newsletter2Go` directory
 
 For example using git:
-    git clone https://github.com/newsletter2go/newsletter2go-oxid6-module.git <shop_directory>/source/modules/Newsletter2Go
+
+    git clone https://github.com/newsletter2go/newsletter2go-oxid6-module.git <shop_directory>/source/modules/newsletter2go
 
 2. Add new namespace to shop composer.json
 
 ```
   "autoload": {
     "psr-4": {
-      "Newsletter2Go\\Newsletter2Go\\": "./source/modules/Newsletter2Go/src"
+      "Newsletter2Go\\Newsletter2Go\\": "./source/modules/newsletter2go"
     }
   }
 ```

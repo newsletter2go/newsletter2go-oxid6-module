@@ -12,7 +12,7 @@
   ],
   "extra": {
     "oxideshop": {
-      "target-directory": "Newsletter2Go"
+      "target-directory": "newsletter2go"
     }
   },
   "require": {
@@ -24,7 +24,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Newsletter2Go\\Newsletter2Go\\": "../../../source/modules/Newsletter2Go"
+      "Newsletter2Go\\Newsletter2Go\\": "../../../source/modules/newsletter2go"
     }
   }
 }
