@@ -25,20 +25,20 @@ For example using git:
 
 4. Navigate in admin control panel to Extensions > Module and search for Newsletter2Go
 
-![Modules](./screenshots/Modules.PNG)
+![Modules](./screenshots/Modules.png)
 
 
 5. Activate the Module
 
-![Activate Module](./screenshots/Activate-Module.PNG "Activate Module")
+![Activate Module](./screenshots/Activate-Module.png "Activate Module")
 
 6. Navigate in the Submenu of the Module to Settings and click on connect button
 
-![Module Settings](./screenshots/Module-Settings.PNG "Module Settings")
+![Module Settings](./screenshots/Module-Settings.png "Module Settings")
 
 7. Authenticate Oxid accessing Newsletter2Go
 
-![Authenticate Oxid](./screenshots/Authenticate.PNG "Authenticate Oxid")
+![Authenticate Oxid](./screenshots/Authenticate.png "Authenticate Oxid")
 
 ## License
     This program is free software: you can redistribute it and/or modify
