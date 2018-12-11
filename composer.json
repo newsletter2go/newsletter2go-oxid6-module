@@ -1,0 +1,30 @@
+{
+  "name": "Newsletter2Go/Newsletter2Go",
+  "description": "Integrator plugin for Newsletter2Go",
+  "type": "oxideshop-module",
+  "keywords": [
+    "newsletter2go",
+    "nl2go"
+  ],
+  "homepage": "https://www.newsletter2go.de/",
+  "license": [
+    "GNU"
+  ],
+  "extra": {
+    "oxideshop": {
+      "target-directory": "Newsletter2Go"
+    }
+  },
+  "require": {
+    "php": ">=5.6",
+    "lib-curl": ">=7.26.0",
+    "lib-openssl": ">=1.0.1",
+    "ext-curl": "*",
+    "ext-openssl": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Newsletter2Go\\Newsletter2Go\\": "../../../source/modules/Newsletter2Go"
+    }
+  }
+}

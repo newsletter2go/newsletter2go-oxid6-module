@@ -1,1 +1,59 @@
-# newsletter2go-oxid6-module
+# Newsletter2Go
+
+Create professional emails without the hassle. Launch automated email campaigns that boost customer engagement and drive sales.
+
+## Installation
+1. Copy the content of this project into `<shop_directory>/source/modules/Newsletter2Go` directory
+
+For example using git:
+    git clone https://github.com/newsletter2go/newsletter2go-oxid6-module.git <shop_directory>/source/modules/Newsletter2Go
+
+2. Add new namespace to shop composer.json
+
+```
+  "autoload": {
+    "psr-4": {
+      "Newsletter2Go\\Newsletter2Go\\": "./source/modules/Newsletter2Go/src"
+    }
+  }
+```
+
+3. Update composer autoloader in `<shop_directory>`
+```
+  composer dump-autoload
+```
+
+4. Navigate in admin control panel to Extensions > Module and search for Newsletter2Go
+
+![Modules](./screenshots/Modules.PNG)
+
+
+5. Activate the Module
+
+![Activate Module](./screenshots/Activate-Module.PNG "Activate Module")
+
+6. Navigate in the Submenu of the Module to Settings and click on connect button
+
+![Module Settings](./screenshots/Module-Settings.PNG "Module Settings")
+
+7. Authenticate Oxid accessing Newsletter2Go
+
+![Authenticate Oxid](./screenshots/Authenticate.PNG "Authenticate Oxid")
+
+## License
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+## Copyright
+https://www.newsletter2go.de
