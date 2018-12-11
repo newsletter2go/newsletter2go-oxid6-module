@@ -21,7 +21,7 @@ class Nl2GoSettings extends ModuleConfiguration
         $queryParams = [];
 
         $oConfig = $this->getConfig();
-        $queryParams['password'] = $oConfig->getConfigParam('nl2goApiKey');
+        $queryParams['apiKey'] = $oConfig->getConfigParam('nl2goApiKey');
         $queryParams['username'] = $oConfig->getConfigParam('nl2goUserName');
         $queryParams['url'] = $oConfig->getShopUrl();
         $queryParams['callback'] = $oConfig->getShopUrl() . '?cl=nl2go_callback&fnc=getCallback';
