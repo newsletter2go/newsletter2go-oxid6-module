@@ -7,8 +7,7 @@ use \OxidEsales\EshopCommunity\Application\Controller\Admin\ModuleConfiguration;
 
 class Nl2GoSettings extends ModuleConfiguration
 {
-    //TODO: Change this URL once the integration for OX6 becomes available on Newsletter2Go
-    const N2GO_INTEGRATION_URL = 'https://ui-sandbox.newsletter2go.com/integrations/connect/OX/';
+    const N2GO_INTEGRATION_URL = 'https://ui-sandbox.newsletter2go.com/integrations/connect/OX6/';
 
     /**
      * Override parent render view.
