@@ -1,9 +1,9 @@
-# Newsletter2Go
+# newsletter2go-oxid6-module
 
 Create professional emails without the hassle. Launch automated email campaigns that boost customer engagement and drive sales.
 
 ## Installation
-1. Copy the content of this project into `<shop_directory>/source/modules/Newsletter2Go` directory
+1. Copy the content of this project into `<shop_directory>/source/modules/newsletter2go` directory
 
 For example using git:
 
