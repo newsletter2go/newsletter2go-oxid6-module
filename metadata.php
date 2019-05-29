@@ -24,14 +24,14 @@ $aModule = [
         'en' => 'Create professional emails without the hassle. Launch automated email campaigns that boost customer engagement and drive sales.',
     ],
     'thumbnail' => 'picture.png',
-    'version' => '4.0.0',
+    'version' => '4.0.1',
     'lang' => 'en',
     'author' => 'Newsletter2Go',
     'url' => 'https://www.newsletter2go.de',
     'email' => 'support@newsletter2go.de',
     'extend' => [
         \OxidEsales\Eshop\Application\Controller\Admin\ModuleConfiguration::class => \Newsletter2Go\Newsletter2Go\Core\Nl2GoSettings::class,
-        'thankyou' => \Newsletter2Go\Newsletter2Go\Controller\ThankYouController::class,
+        \OxidEsales\Eshop\Application\Controller\ThankYouController::class => \Newsletter2Go\Newsletter2Go\Controller\ThankYouController::class,
     ],
     'controllers' => [
         'nl2go_base' => \Newsletter2Go\Newsletter2Go\Controller\BaseController::class,
