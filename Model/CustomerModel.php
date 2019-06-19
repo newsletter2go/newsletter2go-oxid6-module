@@ -89,6 +89,11 @@ class CustomerModel
 
 
         foreach ($metaFields as $field) {
+
+            if (in_array($field->name, ['OXPASSWORD', 'OXPASSSALT'])) {
+                continue;
+            }
+
             switch ($field->type) {
                 case 'int':
                 case 'tinyint':
