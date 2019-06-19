@@ -51,8 +51,6 @@ class CustomerModel
             'OXRIGHTS' => 'User rights: user, malladmin',
             'OXSHOPID' => 'Shop id (oxshops)',
             'OXUSERNAME' => 'Username',
-            'OXPASSWORD' => 'Hashed password',
-            'OXPASSSALT' => 'Password salt',
             'OXCUSTNR' => 'Customer number',
             'OXUSTID' => 'VAT ID No.',
             'OXCOMPANY' => 'Company',
