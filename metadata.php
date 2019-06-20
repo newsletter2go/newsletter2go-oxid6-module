@@ -24,7 +24,7 @@ $aModule = [
         'en' => 'Create professional emails without the hassle. Launch automated email campaigns that boost customer engagement and drive sales.',
     ],
     'thumbnail' => 'picture.png',
-    'version' => '4.0.1',
+    'version' => '4.0.2',
     'lang' => 'en',
     'author' => 'Newsletter2Go',
     'url' => 'https://www.newsletter2go.de',
