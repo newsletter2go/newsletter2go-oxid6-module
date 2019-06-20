@@ -51,8 +51,6 @@ class CustomerModel
             'OXRIGHTS' => 'User rights: user, malladmin',
             'OXSHOPID' => 'Shop id (oxshops)',
             'OXUSERNAME' => 'Username',
-            'OXPASSWORD' => 'Hashed password',
-            'OXPASSSALT' => 'Password salt',
             'OXCUSTNR' => 'Customer number',
             'OXUSTID' => 'VAT ID No.',
             'OXCOMPANY' => 'Company',
@@ -91,6 +89,11 @@ class CustomerModel
 
 
         foreach ($metaFields as $field) {
+
+            if (in_array($field->name, ['OXPASSWORD', 'OXPASSSALT'])) {
+                continue;
+            }
+
             switch ($field->type) {
                 case 'int':
                 case 'tinyint':
