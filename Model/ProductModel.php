@@ -85,41 +85,54 @@ class ProductModel
             'OXISDOWNLOADABLE' => 'Enable download of files for this product'
         ];
 
-        //get oxuser-fields dynamically
-        $oxProductFields = [];
+        $oxProductFields = $this->getProductFields($lang, $descriptions);
+        $oxPrice2ArticleFields = $this->getPrice2ArticleFields($descriptions);
+        $additionalFields = $this->getAdditionalFields();
 
+        return array_merge($oxProductFields, $oxPrice2ArticleFields, $additionalFields);
+    }
+
+    public function getProductFields($lang, $descriptions)
+    {
+        $oxProductFields = [];
         $oDb = DatabaseProvider::getDb(DatabaseProvider::FETCH_MODE_ASSOC);
         $metaFields = $oDb->metaColumns('oxv_oxarticles_'.$lang);
 
-
         foreach ($metaFields as $field) {
-            switch ($field->type) {
-                case 'int':
-                case 'tinyint':
-                    $type = 'Integer';
-                    break;
-                case 'double':
-                case 'float':
-                    $type = 'Float';
-                    break;
-                case 'date':
-                case 'datetime':
-                case 'timestamp':
-                    $type = 'Date';
-                    break;
-                default:
-                    $type = 'String';
-            }
+            $type = $this->getFieldType($field->type);
             $oxProductFields[] = [
                 'id' => 'oxarticles.' . $field->name,
                 'name' => $field->name,
                 'description' => isset($descriptions[$field->name]) ? $descriptions[$field->name] : $field->name,
                 'type' => $type
             ];
-
         }
 
-        $addiditionalFields = [
+        return $oxProductFields;
+    }
+
+    public function getPrice2ArticleFields($descriptions)
+    {
+        $oxPrice2ArticleFields = [];
+        $oDb = DatabaseProvider::getDb(DatabaseProvider::FETCH_MODE_ASSOC);
+        $dbPrice2ArticleFields = $oDb->metaColumns('oxprice2article');
+
+        foreach ($dbPrice2ArticleFields as $field) {
+            $type = $this->getFieldType($field->type);
+            $oxPrice2ArticleFields[] = [
+                'id' => 'oxprice2article.' . $field->name,
+                'name' => $field->name,
+                'description' => isset($descriptions[$field->name]) ? $descriptions[$field->name] : $field->name,
+                'type' => $type
+            ];
+        }
+
+        return $oxPrice2ArticleFields;
+    }
+
+    public function getAdditionalFields()
+    {
+        $additionalFields = [
             [
                 'id' => 'images',
                 'name' => 'Item images',
@@ -170,7 +183,30 @@ class ProductModel
             ],
         ];
 
-        return array_merge($oxProductFields, $addiditionalFields);
+        return $additionalFields;
+    }
+
+    public function getFieldType($field)
+    {
+        switch ($field) {
+            case 'int':
+            case 'tinyint':
+                $type = 'Integer';
+                break;
+            case 'double':
+            case 'float':
+                $type = 'Float';
+                break;
+            case 'date':
+            case 'datetime':
+            case 'timestamp':
+                $type = 'Date';
+                break;
+            default:
+                $type = 'String';
+        }
+
+        return $type;
     }
 
     public function getProductInfo($id, $language = 'de', array $attributeIds = [])
@@ -198,6 +234,7 @@ class ProductModel
         $vendorView = 'oxv_oxvendor_' . $language;
         $manufView = 'oxv_oxmanufacturers_' . $language;
         $artextView = 'oxv_oxartextends_' . $language;
+        $artPriceView = 'oxprice2article';
 
         $querySelect = $this->createProductSelect($attributeIds, $language);
         $queryWhere = " WHERE $articleView.OXID = '" .
@@ -207,8 +244,8 @@ class ProductModel
                             LEFT JOIN $shopView ON $shopView.OXID = $articleView.OXSHOPID
                             LEFT JOIN $vendorView ON $vendorView.OXID = $articleView.OXVENDORID
                             LEFT JOIN $manufView ON $manufView.OXID = $articleView.OXMANUFACTURERID
-                            LEFT JOIN $artextView ON $artextView.OXID = $articleView.OXID ";
-
+                            LEFT JOIN $artextView ON $artextView.OXID = $articleView.OXID
+                            LEFT JOIN $artPriceView ON $artPriceView.OXARTID = $articleView.OXID";
 
         $oDb = DatabaseProvider::getDb(DatabaseProvider::FETCH_MODE_ASSOC);
         /** @var \OxidEsales\Eshop\Core\Database\Adapter\ResultSetInterface $rsProduct */
@@ -279,10 +316,17 @@ class ProductModel
                 case 'vat':
                 case 'url':
                 case 'oxarticles.OXID':
+                case 'oxprice2article.OXID':
+                case 'oxprice2article.OXSHOPID':
+                case 'oxprice2article.OXARTID':
                     break;
                 default:
                     $strings = explode('.', $attribute);
-                    $select .= "oxv_$strings[0]_$lang.$strings[1] AS '$attribute', ";
+                    if($strings[0] == 'oxprice2article'){
+                        $select .= "$attribute AS '$attribute', ";
+                    }else{
+                        $select .= "oxv_$strings[0]_$lang.$strings[1] AS '$attribute', ";
+                    }
                     break;
             }
         }
