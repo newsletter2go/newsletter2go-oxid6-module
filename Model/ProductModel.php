@@ -99,23 +99,7 @@ class ProductModel
         $metaFields = $oDb->metaColumns('oxv_oxarticles_'.$lang);
 
         foreach ($metaFields as $field) {
-            switch ($field->type) {
-                case 'int':
-                case 'tinyint':
-                    $type = 'Integer';
-                    break;
-                case 'double':
-                case 'float':
-                    $type = 'Float';
-                    break;
-                case 'date':
-                case 'datetime':
-                case 'timestamp':
-                    $type = 'Date';
-                    break;
-                default:
-                    $type = 'String';
-            }
+            $type = $this->getFieldType($field->type);
             $oxProductFields[] = [
                 'id' => 'oxarticles.' . $field->name,
                 'name' => $field->name,
@@ -134,23 +118,7 @@ class ProductModel
         $dbPrice2ArticleFields = $oDb->metaColumns('oxprice2article');
 
         foreach ($dbPrice2ArticleFields as $field) {
-            switch ($field->type) {
-                case 'int':
-                case 'tinyint':
-                    $type = 'Integer';
-                    break;
-                case 'double':
-                case 'float':
-                    $type = 'Float';
-                    break;
-                case 'date':
-                case 'datetime':
-                case 'timestamp':
-                    $type = 'Date';
-                    break;
-                default:
-                    $type = 'String';
-            }
+            $type = $this->getFieldType($field->type);
             $oxPrice2ArticleFields[] = [
                 'id' => 'oxprice2article.' . $field->name,
                 'name' => $field->name,
@@ -216,6 +184,29 @@ class ProductModel
         ];
 
         return $additionalFields;
+    }
+
+    public function getFieldType($field)
+    {
+        switch ($field) {
+            case 'int':
+            case 'tinyint':
+                $type = 'Integer';
+                break;
+            case 'double':
+            case 'float':
+                $type = 'Float';
+                break;
+            case 'date':
+            case 'datetime':
+            case 'timestamp':
+                $type = 'Date';
+                break;
+            default:
+                $type = 'String';
+        }
+
+        return $type;
     }
 
     public function getProductInfo($id, $language = 'de', array $attributeIds = [])
