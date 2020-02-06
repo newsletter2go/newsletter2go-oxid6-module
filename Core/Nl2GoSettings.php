@@ -3,9 +3,8 @@
 namespace Newsletter2Go\Newsletter2Go\Core;
 
 use OxidEsales\Eshop\Core\Registry;
-use \OxidEsales\EshopCommunity\Application\Controller\Admin\ModuleConfiguration;
 
-class Nl2GoSettings extends ModuleConfiguration
+class Nl2GoSettings extends Nl2GoSettings_parent
 {
     const N2GO_INTEGRATION_URL = 'https://ui.newsletter2go.com/integrations/connect/OX6/';
 

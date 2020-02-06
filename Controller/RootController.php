@@ -5,7 +5,7 @@ namespace Newsletter2Go\Newsletter2Go\Controller;
 use OxidEsales\Eshop\Application\Controller\FrontendController;
 use OxidEsales\Eshop\Core\Utils;
 use Newsletter2Go\Newsletter2Go\Helper\Nl2GoResponseHelper;
-use OxidEsales\EshopCommunity\Core\Request;
+use OxidEsales\Eshop\Core\Request;
 
 class RootController extends FrontendController
 {
